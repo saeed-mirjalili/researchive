@@ -1,0 +1,29 @@
+@font-face {
+  font-family: lable;
+  src: url(body.ttf);
+}
+
+body {
+  font-family: lable;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+.input-group button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.felesh div {
+  font-size: 2vw;
+  color: gray;
+  margin: auto 1%;
+}
+
+.disable {
+  cursor: not-allowed;
+  color: silver;
+}
