@@ -1,0 +1,120 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="col-md-6">
+  <form method="get" class="d-flex" novalidate>
+    <div class="input-group">
+      {{ form.search }}
+      <button class="btn btn-secondary btn-lg" type="submit">
+        <span class="icon-search"></span>
+      </button>
+    </div>
+  </form>
+</div>
+    
+<div class="container p-2">
+    <div class="row bd-highlight justify-content-center">
+      <div class="col-md-6  align-self-center text-center">
+        <h1>Scientific articles</h1>
+        <p>
+          We have provided you with a library containing <b>{{ num }}</b> scientific
+          articles in various fields
+        </p>
+        <p>
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    
+      <div class="col-md-6 bd-highlight">
+        {% load static %}
+        <img src="{% static 'svg/library.svg' %}" alt="..." />
+      </div>
+    </div>
+</div>
+    
+<hr class="w-75" />
+
+
+<div class="container">
+      <div class="row">
+        {% for article in articles %}
+        <div class="card  col-12 col-lg-3 m-1" style="padding-left: 0;padding-right: 0;">
+
+      <div class="card-header d-flex justify-content-between">
+        <h5
+          class="d-flex justify-content-between"
+          dir="{% if article.lang == 'fa' %}rtl{% else %}ltr{% endif %}"
+        >
+          {{ article.title }}
+        </h5>
+        <a href="/star/star/{{ article.id }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+          {% if article.like_count == 0 %}
+          <span class="icon-star-o">
+          {% else %}
+          <span class="icon-star">
+          {% endif %}
+          </span> Star<span> {{ article.like_count }} </span>
+        </a>
+      </div>
+      <div class="card-body" style="max-height: 233px; overflow: hidden">
+        <p class="card-text"
+          dir="{% if article.lang == 'fa' %}rtl{% else %}ltr{% endif %}">
+          {{ article.body }}
+        </p>
+
+      </div>
+      <div class="card-footer">
+        <span class="icon-calendar"></span>
+        <small class="text-body-secondary">
+            {{ article.created }}
+        </small>
+        <a href="{% url 'detail' article.id %}" class="btn btn-primary">
+            read more
+        </a>
+      </div>
+    
+    </div>
+        {%endfor%}
+        <div class="col-12 col-lg-2 d-flex flex-column justify-content-center align-items-center">
+            <span class="text-center">
+              <h2>{{ text }}</h2>
+              You can filter the articles with the help of the following options. I hope it will be useful for you
+            </span>
+            <span class="felesh d-flex" style="font-size: 1vw;">
+              {% if articles.has_previous %}
+                <div><a href="?page={{ articles.previous_page_number }}"><span class="icon-navigate_before"></span></a></div>
+              {% else %}
+                <div><span class="icon-navigate_before disable"></span></div>
+              {% endif %}
+              {% if articles.has_next %}
+                <div><a href="?page={{ articles.next_page_number }}"><span class="icon-navigate_next"></span></a></div>
+              {% else %}
+                <div><span class="icon-navigate_next disable"></span></div>
+              {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+    
+    
+<hr class="w-75" />
+<div class="container">
+    <div class="row bd-highlight justify-content-center">
+      <div class="col-8 col-lg-4 p-2 ">
+        {% load static %}
+        <img src="{% static 'svg/table.svg' %}" alt="..." />
+      </div>
+      <div class="col-8 col-lg-6 p-2 align-self-center text-center">
+        <h1>Personal library</h1>
+        <p>
+          You can upload your articles. These articles will be registered with your
+          ownership and a summary of this article will be displayed for others
+        </p>
+        <a href="/upload" class="btn btn-secondary mb-3">create</a>
+        <p>
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+</div>
+    
+{% endblock %}

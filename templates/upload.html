@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="w-50 mx-auto p-3 rounded border border-light">
+  <form
+    action=""
+    method="post"
+    class="form"
+    enctype="multipart/form-data"
+    novalidate
+  >
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" class="btn btn-success" value="submit" />
+  </form>
+</div>
+
+{% endblock %}

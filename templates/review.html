@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="w-50 mx-auto p-3 rounded border border-light">
+  <form
+    action=""
+    method="post"
+    class="form"
+    enctype="multipart/form-data"
+    novalidate
+  >
+    {% csrf_token %}
+    <p>
+      <label> {{ form.title.label }}: </label>
+      <span dir="{% if lang == 'fa' %}rtl{% else %}ltr{% endif %}">
+        {{ form.title }}
+      </span>
+    </p>
+    <p>
+      <label>{{ form.body.label }}:</label>
+      <span dir="{% if lang == 'fa' %}rtl{% else %}ltr{% endif %}">
+        {{ form.body }}
+      </span>
+    </p>
+    {{ form.lang }}
+    <button type="submit" class="btn btn-success">submit</button>
+  </form>
+</div>
+
+{% endblock %}

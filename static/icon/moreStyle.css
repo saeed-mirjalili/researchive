@@ -1,0 +1,16 @@
+.icon-star-o {
+  color: #414141;
+}
+.icon-star {
+  color: gold;
+}
+
+
+@media screen and (max-width: 900px) {
+  .icon-navigate_before{
+    font-size: 10vw;
+  }
+    .icon-navigate_next{
+    font-size: 10vw;
+  }
+}
