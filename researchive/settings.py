@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-62^sq2o4+_wo$&c5wke8o&lkw&m@20!4!2&zy-+xyu$@8ej(p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['researchive.ir', 'www.researchive.ir']
+ALLOWED_HOSTS = ['researchive.ir', 'www.researchive.ir','http://127.0.0.1:8000', '127.0.0.1']
 
 
 # Application definition
